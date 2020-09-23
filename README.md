@@ -23,4 +23,4 @@
 * this code is not efficient, but it does the following:
     - read each attribute as an individual object (with case-id)
     - group all objects by case-id
-    - unify info by case-id and write to console
+    - unify info by case-id and write to console (for Atlantic Region)
