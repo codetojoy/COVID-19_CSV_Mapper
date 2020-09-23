@@ -12,7 +12,6 @@ class InfoMapper {
     static final String AGE_GROUP = "Age group"
     static final String RECOVERED = "Recovered"
 
-
 // ﻿"REF_DATE","GEO","DGUID","Case identifier number","Case information",
 // "UOM","UOM_ID","SCALAR_FACTOR","SCALAR_ID","VECTOR",
 // "COORDINATE","VALUE","STATUS","SYMBOL","TERMINATED","DECIMALS"

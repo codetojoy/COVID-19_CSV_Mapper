@@ -8,8 +8,6 @@ class Parser {
 
     // use side-effect
     def parseFile = { def text, def infos  ->
-        // println "TRACER parser cp 'A' size: " + infos.size()
-
         def data = parseCsv text
 
         data.each { def line ->

@@ -14,7 +14,7 @@ class Info {
     static def utils = new Utils()
 
     static String getHeader() {
-        "ERROR" // utils.buildList(["Party", "Last Name", "First Name", "City", "Total"])
+        utils.buildList(["Case Id", "Region", "Age Group", "Recovered"])
     }
 
     String toString() {

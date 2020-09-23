@@ -2,10 +2,11 @@
 
 set -e 
 
-stat ./original/data.csv > /dev/null 2>&1 
+stat ./original/data.csv > /dev/null 
+stat ./staging/bin/COVID-19_CSV_Mapper > /dev/null 
 
 ./gradlew -q clean test
 ./gradlew -q installDist
-./staging/bin/mapper ./original/data.csv 
+./staging/bin/COVID-19_CSV_Mapper ./original/data.csv > out.csv 
 
-echo "Ready."
+echo "Ready... see out.csv in this folder"

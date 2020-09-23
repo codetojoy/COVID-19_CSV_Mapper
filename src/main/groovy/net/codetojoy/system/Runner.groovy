@@ -2,6 +2,7 @@
 package net.codetojoy.system
 
 import net.codetojoy.custom.Config
+import net.codetojoy.custom.Info
 import net.codetojoy.utils.Utils
 
 class Runner {
@@ -40,33 +41,27 @@ class Runner {
     def generateOutput(def infosByCaseId) {
         def utils = new Utils()
 
-        infosByCaseId.each { caseId, infos ->
-            def region = ""
-            def ageGroup = ""
-            def recovered = ""
+        println Info.getHeader()
 
+        infosByCaseId.each { caseId, infos ->
+            def unifiedInfo = new Info(caseId: caseId)
+
+            // these all have the same caseId
             infos.each { info ->
-                if (info.region) { region = info.region }
-                if (info.ageGroup) { ageGroup = info.ageGroup }
-                if (info.recovered) { recovered = info.recovered }
+                if (info.region) { unifiedInfo.region = info.region }
+                if (info.ageGroup) { unifiedInfo.ageGroup = info.ageGroup }
+                if (info.recovered) { unifiedInfo.recovered = info.recovered }
             }
 
-            if (utils.isEqualSafe(REGION_ATLANTIC, region)) {
-                def prefix = ""
-                if (! utils.isEqualSafe(RECOVERED, recovered)) {
-                    prefix = "NONREC"
-                }
-                println "${prefix} ${caseId} ${region} ${ageGroup} ${recovered}"
+            if (utils.isEqualSafe(REGION_ATLANTIC, unifiedInfo.region)) {
+                println unifiedInfo.toString()
             }
         }
     }
 
     def run(def infile) {
-        println "TRACER run cp 1 before buildInfos"
         def infos = buildInfos(infile)
-
         def infosByCaseId = infos.groupBy { info -> info.caseId }
-        println "TRACER run cp 2 after buildInfos"
         generateOutput(infosByCaseId)
     }
 
