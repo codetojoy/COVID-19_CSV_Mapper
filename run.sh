@@ -6,6 +6,6 @@ stat ./original/data.csv > /dev/null 2>&1
 
 ./gradlew -q clean test
 ./gradlew -q installDist
-./staging/bin/mapper ./original/data.csv 
+./staging/bin/COVID-19_CSV_Mapper ./original/data.csv 
 
 echo "Ready."
